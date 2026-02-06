@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap");
 
 :root {
   --background: #5b6753;
   --card-bg: #5f6446;
-  --text: #F6F4D2;
-  --border: #CBDFBD;
+  --text: #f6f4d2;
+  --border: #cbdfbd;
 }
 
 body {
   margin: 0;
-  font-family: "Zalando Sans Expanded", serif;
+  font-family: "Zalando Sans Expanded", sans-serif;
   background-color: var(--background);
   color: var(--text);
+  line-height: 1.6;
 }
 
 .topnav {
@@ -118,7 +119,9 @@ p {
   background-color: var(--card-bg);
   border: 1px solid var(--border);
   padding: 1.8rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   color: var(--text);
 }
 
@@ -137,12 +140,8 @@ p {
 }
 
 .image-box.large-image {
-  width: 100%;
   height: auto;
   object-fit: contain;
-  border: 2px dashed var(--border);
-  display: block;
-  margin-bottom: 1rem;
 }
 
 .highlight {
@@ -160,6 +159,7 @@ footer {
 
 a {
   color: inherit;
+  transition: color 0.2s;
 }
 
 a:hover {
