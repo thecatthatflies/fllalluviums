@@ -1,0 +1,395 @@
+@import url("https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&display=swap");
+
+body {
+  margin: 0px;
+  overflow: hidden;
+  font-family: "TASA Orbiter", sans-serif;
+  touch-action: none;
+  user-select: none;
+  color: #e0e4ec;
+}
+
+button {
+  appearance: none;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  align-items: center;
+  justify-content: center;
+  font-family: "TASA Orbiter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e0e4ec;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 150ms,
+    border-color 150ms;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body > div {
+  transform-origin: left top;
+  position: fixed;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+body > div > button {
+  position: fixed;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  width: 52px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+button.up,
+button.down {
+  position: fixed;
+  top: unset;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+button.up:active,
+button.down:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+button.up {
+  bottom: 112px;
+  border-radius: 14px 14px 4px 4px;
+}
+
+button.down {
+  bottom: 64px;
+  border-radius: 4px 4px 14px 14px;
+}
+
+button.up > img,
+button.down > img {
+  width: 16px;
+  height: 16px;
+  user-select: none;
+  pointer-events: none;
+  filter: invert(1) brightness(2);
+}
+
+button.down > img {
+  rotate: 180deg;
+}
+
+button.light {
+  position: fixed;
+  top: unset;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+overlay {
+  position: fixed;
+  display: flex;
+  z-index: 3;
+  justify-content: center;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow-y: scroll;
+  align-items: center;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+overlay::-webkit-scrollbar {
+  display: none;
+}
+
+overlay.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+overlay > div {
+  max-width: 90%;
+  max-height: 100%;
+}
+
+overlay > div > div {
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(20, 24, 32, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+}
+
+overlay > div > div > button {
+  width: 260px;
+  height: 38px;
+  margin: 6px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 12px;
+}
+
+.back {
+  margin-top: 24px;
+}
+
+inputDiv {
+  text-align: start;
+  vertical-align: middle;
+  font-family: "TASA Orbiter", sans-serif;
+  font-size: 13px;
+  color: #c8ccd4;
+  display: inline-block;
+  margin: 6px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  width: 260px;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+toggleDiv {
+  display: block;
+}
+
+@property --p {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+toggle {
+  display: block;
+  width: 48px;
+  height: 24px;
+  margin: 6px 0px 0px 0px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: --p 300ms;
+  background: linear-gradient(
+    to right,
+    rgba(90, 160, 255, 0.9) 0%,
+    rgba(90, 160, 255, 0.9) var(--p),
+    rgba(255, 255, 255, 0.1) var(--p),
+    rgba(255, 255, 255, 0.1) 100%
+  );
+}
+
+toggle.enabled {
+  --p: 100%;
+}
+
+togglethumb {
+  display: block;
+  position: absolute;
+  transform: translateY(calc(-100% + 4px));
+  cursor: pointer;
+  transition: transform 300ms;
+}
+
+togglethumb.enabled {
+  transform: translate(calc(48px - 100%), calc(-100% + 4px));
+}
+
+input[type="range"] {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 24px;
+  outline: none;
+  margin: 6px 0px 0px 0px;
+  border-radius: 12px;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+togglethumb {
+  appearance: none;
+  display: block;
+  width: 16px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: rgba(200, 210, 230, 0.9);
+}
+
+debug {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  top: 8px;
+  left: 220px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: #c8ccd4;
+  background-color: rgba(14, 18, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+}
+
+info {
+  display: block;
+  color: #c8ccd4;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px;
+  border-radius: 14px;
+}
+
+code {
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-family: "TASA Orbiter", monospace;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a8c8ff;
+}
+
+.joystick,
+.joystickHidden {
+  position: absolute;
+  z-index: 2;
+  width: 128px;
+  height: 128px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.joystick {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.joystickHidden {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+a {
+  color: #6ab0ff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 200ms,
+    border-color 200ms;
+}
+
+a:hover {
+  color: #9ccaff;
+  border-bottom-color: #6ab0ff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #9a8dff;
+  text-decoration: none;
+}
+
+a:visited:hover {
+  color: #bbb4ff;
+  border-bottom-color: #9a8dff;
+}
+
+/* ---- HUD Dive Info Panel ---- */
+
+.hud-container {
+  position: fixed;
+  z-index: 1;
+  top: 8px;
+  left: 8px;
+  pointer-events: auto;
+}
+
+.hud-toggle {
+  position: relative;
+  top: unset;
+  right: unset;
+  width: auto;
+  height: auto;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #c8ccd4;
+  background-color: rgba(14, 18, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px 14px 0 0;
+  cursor: pointer;
+  z-index: auto;
+}
+
+.hud-toggle:active {
+  background-color: rgba(30, 36, 48, 0.85);
+}
+
+.hud-panel {
+  background-color: rgba(14, 18, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: none;
+  border-radius: 0 14px 14px 14px;
+  padding: 6px 12px;
+  min-width: 180px;
+}
+
+.hud-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.hud-row:last-child {
+  border-bottom: none;
+}
+
+.hud-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(160, 175, 200, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-right: 14px;
+}
+
+.hud-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e0e4ec;
+}
