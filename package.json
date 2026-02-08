@@ -1,0 +1,24 @@
+{
+  "name": "sealis-fllalluviums",
+  "version": "5.4.8",
+  "description": "SEALIS simulation for the FLL Alluviums team, and a landing page for them.",
+  "homepage": "https://github.com/thecatthatflies/fllalluviums#readme",
+  "bugs": {
+    "url": "https://github.com/thecatthatflies/fllalluviums/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecatthatflies/fllalluviums.git"
+  },
+  "license": "ISC",
+  "author": "thecatthatflies and the FLL Alluviums team",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "helmet": "^7.0.0"
+  }
+}
